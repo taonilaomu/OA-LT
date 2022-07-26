@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<form style="display: flex;flex-direction: column" method="post" action="register" onsubmit="return validate_form()">
+    <input type="text" placeholder="请输入用户名" name="username" id="username" onblur="checkNull('username','用户名不能为空')">
+    <input type="password" placeholder="请输入密码" name="password" id="password" onblur="checkNull('password','用户名不能为空')">
+    <input type="password" placeholder="请重新输入密码" name="reword" id="reword" onblur="checkEqual('用户名密码必须一致')">
+    <input type="submit" value="登录">
+</form>
+<div id="showText" style="border: 1px solid red"></div>
+<script>
+    function validate_form() {
+        let username = document.getElementById("username").value;
+
+        let password = document.getElementById("password").value;
+        let reword = document.getElementById("reword").value;
+        console.log(username);
+        console.log(password);
+        console.log(reword);
+        if (username != '' && password != '' && reword != '' && reword == password) {
+            return true;
+        } else {
+            document.getElementById("showText").innerText = "请重新输入";
+            return false;
+        }
+    }
+
+    function checkNull(id, text) {
+        let innerText = document.getElementById(id).getAttribute("value");
+        console.log(innerText);
+        if (innerText == "") {
+            document.getElementById("showText").innerText = text;
+        }
+
+    }
+
+    function checkEqual(text) {
+        let password = document.getElementById("password").valueOf();
+        let reword = document.getElementById("reword").valueOf();
+        if (password != "reword") {
+            document.getElementById("showText").innerText = text;
+        }
+    }
+</script>
+</body>
+</html>

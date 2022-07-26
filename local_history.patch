@@ -1,0 +1,41 @@
+Index: web/home.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/web/home.jsp b/web/home.jsp
+--- a/web/home.jsp	
++++ b/web/home.jsp	(date 1658477169366)
+@@ -101,20 +101,23 @@
+         request.send();
+     }
+ 
+-    function go() {
++      function go() {
+         let request2 = new XMLHttpRequest();
+         request2.onreadystatechange = function () {
+-<%--        fixme 为什么既展示正确又展示错误--%>
+-            if (request2.readyState == 4 && request2.status == 200) {
+-                alert(request2.responseText);
+-                if (request2.responseText == "true") {
+-                    alert("正确");
+-                } else {
+-                    alert("错误");
++            if (request2.readyState == 4) {
++                if (request2.status != 200) {
++                    alert("服务器出现异常")
++                } else {
++                    console.log(request2.responseText);
++                    if (request2.responseText == "true") {
++                        alert("已经被正确处理");
++                    } else {
++                        alert("出现很大问题");
++                    }
+                 }
+             }
+         }
+-        request2.open("GET","${pageContext.request.contextPath}/ajax.action", true);
++        request2.open("GET", "${pageContext.request.contextPath}/ajax.action", true);
+         request2.send();
+     }
+ 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div>
+    <form style="display: flex;flex-direction: column" method="post" action="login" onsubmit="return valid_form()">
+        <input type="text" placeholder="请输入用户名" name="username" id="username" onblur="checkNull('username','用户名不能为空')">
+        <input type="password" placeholder="请输入密码" name="password" id="password"
+               onblur="checkNull('password','密码不能为空')">
+        <input type="submit" value="登录">
+    </form>
+
+    <button>
+        <a href="register.html">注册</a>
+    </button>
+    <button>
+        <a href="findPassword.html">忘记密码</a>
+    </button>
+    <div id="showText" style="border: 1px solid red"></div>
+</div>
+<script>
+    function valid_form() {
+        let username = document.getElementById("username").value;
+
+        let password = document.getElementById("password").value;
+        console.log("username" + username);
+        console.log("password" + password);
+        if (username != '' && password != '') {
+            return true;
+        } else {
+            document.getElementById("showText").innerText = "请重新输入";
+            return false;
+        }
+    }
+
+    function checkNull(id, text) {
+        let innerText = document.getElementById(id).value;
+        console.log(innerText);
+        if (innerText == "" || innerText == null) {
+            document.getElementById("showText").innerText = text;
+        }
+
+    }
+</script>
+</body>
+</html>

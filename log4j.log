@@ -1,0 +1,2 @@
+2022-07-24 16:20:17 INFO  [main] LogTest.test(LogTest.java:15) -kaixin
+2022-07-24 16:25:47 INFO  [http-nio-8080-exec-4] controller.LoginServlet.doPost(LoginServlet.java:37) -just test log

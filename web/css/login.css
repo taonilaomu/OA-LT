@@ -1,0 +1,10 @@
+form {
+    width: 600px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    line-height: 30px;
+}
